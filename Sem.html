@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Select Your Semester</h2>
+        <div class="grid">
+            <button onclick="selectSemester(1)">Semester 1</button>
+            <button onclick="selectSemester(2)">Semester 2</button>
+            <button onclick="selectSemester(3)">Semester 3</button>
+            <button onclick="selectSemester(4)">Semester 4</button>
+            <button onclick="selectSemester(5)">Semester 5</button>
+            <button onclick="selectSemester(6)">Semester 6</button>
+        </div>
+    </div>
+
+    <script>
+        function selectSemester(semester) {
+            alert("You selected Semester " + semester);
+        }
+    </script>
+</body>
+</html>
