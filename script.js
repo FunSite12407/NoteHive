@@ -1,26 +1,28 @@
-const navHome = document.querySelector(".home");
-const navItems = document.querySelectorAll(".nav-items");
+document.addEventListener("DOMContentLoaded", function() {
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
 
-const homePage = document.querySelector("#home-page");
-const assignmentsPage = document.querySelector("#assignments-page");
-const notesPage = document.querySelector("#notes-page");
-const examPapersPage = document.querySelector("#exam-papers-page");
-const aboutPage = document.querySelector("#about-page");
-const pages = document.querySelectorAll(".pages");
+    if (loginForm) {
+        loginForm.addEventListener("submit", function(event) {
+            const username = document.getElementById("loginUsername").value;
+            const password = document.getElementById("loginPassword").value;
 
-const hidePages = () => pages.forEach(page => {
-    page.classList.add("hidden");
+            if (!username || !password) {
+                alert("Please fill in all fields.");
+                event.preventDefault();
+            }
+        });
+    }
+
+    if (registerForm) {
+        registerForm.addEventListener("submit", function(event) {
+            const username = document.getElementById("registerUsername").value;
+            const password = document.getElementById("registerPassword").value;
+
+            if (!username || !password) {
+                alert("Please fill in all fields.");
+                event.preventDefault();
+            }
+        });
+    }
 });
-hidePages();
-homePage.classList.remove("hidden");
-
-navItems.forEach(navItem => {
-    navItem.addEventListener("click",
-        function() {
-            hidePages();
-            console.log(navItem.classList[1]+"-page");
-            console.log(document.getElementById(navItem.classList[1]+"-page").classList.remove("hidden"));
-        }
-    );
-});
-
