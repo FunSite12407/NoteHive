@@ -16,7 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = trim($_POST['name']);
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT password FROM users WHERE name = ?");
+    $stmt = $conn->prepare("SELECT password FROM users WHERE name = ?"); // Assuming plain text password
+
     $stmt->bind_param("s", $name);
     $stmt->execute();
     $stmt->store_result();
@@ -25,9 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_result($hashed_password);
         $stmt->fetch();
 
-        if (password_verify($password, $hashed_password)) {
+        if ($password === $hashed_password) { // Direct comparison for plain text password
             $_SESSION['user'] = $name;
-            header("Location: index.php"); // Redirect to index.php
+            header("Location: index.html"); // Redirect to index.php
             exit();
         } else {
             echo "Incorrect password.";

@@ -39,7 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Hash the password
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $hashed_password = $password; // Store plain text password directly
+    // Remove the line that hashes the password
+
 
     // Prepare and bind
     $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
